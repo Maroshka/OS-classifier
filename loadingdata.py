@@ -61,10 +61,10 @@ def loadData(ids, cat):
 	db = msql.connect("54.172.94.83", 'muna', '1469621300', 'opensooq_main', charset='utf8', use_unicode=True)
 	csr = db.cursor()
 	qry = "SELECT id, title, description, categories_id, subcategories_id FROM posts WHERE categories_id in "+ids+" \
-	 and record_insert_date < '2016-8-20' LIMIT 10000"
+	 and record_insert_date < '2016-8-20' LIMIT 12000"
 
 	qry2 = "SELECT id, title, description, categories_id, subcategories_id FROM posts WHERE categories_id not in "+ids+" \
-	 and record_insert_date < '2016-8-20' LIMIT 10000"
+	 and record_insert_date < '2016-8-20' LIMIT 8000"
 	csr.execute(qry)
 	data = csr.fetchall()
 	csr.execute(qry2)
@@ -88,7 +88,7 @@ def loadData(ids, cat):
 
 cats = [(catIds,'CARS'), (reids,'REALESTATE')]
 for cat in cats:
-	loadData(cat[0], cat[1])
+	loadData(reids,'REALESTATE')
 
 db.close()
 
