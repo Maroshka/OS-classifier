@@ -14,7 +14,9 @@ class clean(object):
 
 	def rmpun(self):
 		self.text = self.text.lower()
-		self.text = re.sub(r'[\.\,\:\/\-\+\=\(\)0-9\<\>\n\t\r\%\$]' ,u'',self.text)
+		#remove tags
+		self.text = re.sub(r'\<(\\|)[a-z]\>', u'', self.text)
+		# self.text = re.sub(r'[\.\,\:\/\-\+\=\(\)0-9\<\>\n\t\r\%\$]' ,u'',self.text)
 		re.sub(r'[\.\,\:\/\-\+\=\(\)0-9\<\>\n\t\r\\]', '', self.text)
 		self.text = re.sub(ur'( ال*)', u' ', self.text)
 		self.text = re.sub(ur'( لل*)', u' ', self.text)
